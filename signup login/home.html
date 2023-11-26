@@ -1,0 +1,79 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: home.html");
+    exit();
+}
+
+$username = $_SESSION['username'];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        h1{
+        text-align: center;
+        }
+        header {
+        background-color: rgb(243, 247, 7);
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        }
+        nav ul {
+        list-style: none;
+        }
+        nav ul li {
+        display: inline;
+        margin-right: 20px;
+        }
+        nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        }
+        form {
+        margin-top: 10px;
+        }
+        footer {
+        background-color: rgb(218, 131, 171);
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        }
+        </style>
+    <title>Welcome to the Home Page</title>
+</head>
+<body>
+    <h1>ELITE HOUSING SOLUTIONS</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Our services.html">Our Services</a></li>
+                <li><a href="about us.html">About Us</a></li>
+                <li><a href="contact us.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <form action="search.php" method="get">
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" placeholder="Enter your search">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <h1>Welcome, <?php echo $username; ?>!</h1>
+    <p>This is the home page. Only logged-in users can access this content.</p>
+    <a href="logout.php">Logout</a>
+    <footer>
+        <p>&copy; 2023 Anthony. All rights reserved.</p>
+    </footer>
+</body>
+</html>
